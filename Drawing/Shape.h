@@ -25,10 +25,11 @@ class Circle : public DrawingShape
 { 
 private:
 	CircleShape circle;
+	const int RADIUS;
 public:
-	void draw(int xpos, int ypos, int RADIUS, int color)
+	void draw(RenderWindow& win)
 	{
-		Vector2f redPos(xpos, ypos);
+		Vector2f redPos(200, 200);
 		circle.setPosition(redPos);
 		circle.setRadius(RADIUS);
 		circle.setOutlineThickness(2);
@@ -43,7 +44,7 @@ class Square : public DrawingShape
 private:
 	RectangleShape square;
 public:
-	void draw(int xpos, int ypos, int SIZE, int color)
+	void draw()
 	{
 		
 	}
