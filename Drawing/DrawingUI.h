@@ -18,11 +18,21 @@ public:
 
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
+		RectangleShape canvas;
+		Vector2f canvasPos(250, 50);
+		canvas.setPosition(canvasPos);
+		canvas.setOutlineColor(Color::Black);
+		canvas.setOutlineThickness(10);
+		canvas.setSize(Vector2f(500, 500));
+		canvas.setFillColor(Color::White);
+		win.draw(canvas);
+
 	}
 	
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
-		return false; // just to make it compile
+		bool result = 0;
+		return result; // just to make it compile
 	}
 
 };

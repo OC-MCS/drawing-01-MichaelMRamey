@@ -1,5 +1,7 @@
 //================================================
-// YOUR NAME GOES HERE <-----------------  
+// Michael Ramey
+// Program 6: Drawing
+// 3/29/19
 //================================================
 #include <iostream>
 #include <fstream>

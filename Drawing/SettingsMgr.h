@@ -11,7 +11,8 @@ enum ShapeEnum { CIRCLE, SQUARE };
 class SettingsMgr
 {
 private:
-	
+	int currentColor;
+	int currentShape;
 public:
 	SettingsMgr(Color startingColor, ShapeEnum startingShape )
 	{
