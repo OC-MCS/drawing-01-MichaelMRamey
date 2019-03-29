@@ -17,7 +17,7 @@ public:
 	SettingsUI(SettingsMgr *mgr)
 	{
 		settingsManager = mgr;
-		
+
 		//Red button
 		Vector2f redPos(100, 70);
 		redBtn.setPosition(redPos);

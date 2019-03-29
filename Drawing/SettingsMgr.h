@@ -14,7 +14,7 @@ private:
 	Color currentColor;
 	ShapeEnum currentShape;
 public:
-	SettingsMgr(Color startingColor, ShapeEnum startingShape )
+	SettingsMgr(Color startingColor, ShapeEnum startingShape)
 	{
 		currentColor = startingColor;
 		currentShape = startingShape;

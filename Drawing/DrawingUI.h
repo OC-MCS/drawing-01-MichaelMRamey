@@ -10,30 +10,36 @@ using namespace sf;
 class DrawingUI
 {
 private:
-
+	RectangleShape canvas;
 public:
 	DrawingUI(Vector2f p)
 	{
+		Vector2f canvasPos(250, 0);
+		canvas.setPosition(canvasPos);
+		canvas.setOutlineColor(Color::Black);
+		canvas.setOutlineThickness(3);
+		canvas.setSize(Vector2f(600,600));
+		canvas.setFillColor(Color::White);
 	}
 
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
-		RectangleShape canvas;
-		Vector2f canvasPos(250, 50);
-		canvas.setPosition(canvasPos);
-		canvas.setOutlineColor(Color::Black);
-		canvas.setOutlineThickness(10);
-		canvas.setSize(Vector2f(500, 500));
-		canvas.setFillColor(Color::White);
+		vector<DrawingShape*> list = mgr->listShapes();
 		win.draw(canvas);
-
+		for (int i = 0; i < list.size(); i++)
+		{
+			list[i]->draw(win);
+		}
 	}
 	
-	bool isMouseInCanvas(Vector2f mousePos)
+	bool isMouseInCanvas(Vector2f mouse)
 	{
-		bool result = 0;
-		return result; // just to make it compile
+		bool result = false;
+		if (canvas.getGlobalBounds().contains(mouse))
+		{
+			result = true;
+		}
+		return result;
 	}
-
 };
 

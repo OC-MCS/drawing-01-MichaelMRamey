@@ -17,15 +17,6 @@ using namespace sf;
 // add code, you shouldn't need to add any logic to main to satisfy
 // the requirements of this programming assignment
 
-struct currentColorSetting
-{
-	
-};
-
-struct currentShapeSetting
-{
-
-};
 int main()
 {
 	const int WINDOW_WIDTH = 800;
