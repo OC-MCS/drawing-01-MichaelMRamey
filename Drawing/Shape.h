@@ -4,41 +4,50 @@
 using namespace std;
 using namespace sf;
 
-// finish this code; add functions, classes, data as needed
-struct drawingData
+struct drawingData  //Struct to be passed to the write functions. data written to file
 {
 	ShapeEnum shape;
 	Vector2f pos;
 	int color;
 };
-// DrawingShape should be an abstract base class 
-// for Circle and Square
+
+
 class DrawingShape
 {
 public:
-	virtual void draw(RenderWindow& win) = 0;
-	virtual drawingData getRecordInfo() = 0;
+	virtual void draw(RenderWindow& win) = 0;  //Polymorphic func to draw the shape
+	virtual drawingData getRecordInfo() = 0;   //Polymorphic func that returns a struct drawing data
 };
-
-// add Circle, Square classes below. These are derived from DrawingShape
 
 class Circle : public DrawingShape
 {
 private:
-	CircleShape circle;
-	const int RADIUS = 10;
+	CircleShape circle;  //Var to store a circle
+	const int RADIUS = 10;  //Const var for radius.  If changed will affect circles drawn on canvas
 public:
+	//================================================
+	// Circle
+	// Constructor for a circle.  Takes the position
+	// and color and sets the new circle's data to 
+	// match that.  Also sets radius.
+	//================================================
 	Circle(Vector2f pos, Color color)
 	{
 		circle.setPosition(pos);
 		circle.setFillColor(color);
 		circle.setRadius(RADIUS);
 	}
+	// Draw: draws the circle
 	void draw(RenderWindow& win)
 	{
 		win.draw(circle);
 	}
-
+	//================================================
+	// getRecordInfo
+	// Creates a temp struct drawingData (to be sent
+	// to file), sets it to hold the circle's color,
+	// pos and shape, and returns it.
+	//================================================
 	drawingData getRecordInfo()
 	{
 		drawingData result;
@@ -52,20 +61,31 @@ public:
 class Square : public DrawingShape
 {
 private:
-	RectangleShape square;
+	RectangleShape square;  //Var to hold data for a square.
 public:
+	//================================================
+	// Square
+	// Constructor for a Square.  Takes the position
+	// and color and sets the new Square's data to 
+	// match that.  Also sets the size.
+	//================================================
 	Square(Vector2f pos, Color color)
 	{
 		square.setPosition(pos);
 		square.setFillColor(color);
 		square.setSize(Vector2f(20, 20));
 	}
-
+	// Draw: draws the square on the canvas
 	void draw(RenderWindow& win)
 	{
 		win.draw(square);
 	}
-
+	//================================================
+	// getRecordInfo
+	// Creates a temp struct drawingData (to be sent
+	// to file), sets it to hold the squares's color,
+	// pos and shape, and returns it.
+	//================================================
 	drawingData getRecordInfo()
 	{
 		drawingData result;

@@ -11,13 +11,14 @@ using namespace sf;
 class ShapeMgr
 {
 private:
-	vector<DrawingShape*> shapes;
+	vector<DrawingShape*> shapes;  //Vector of pointers to drawingShapes.  Will hold a pointer to every shape drawn on the canvas
 public:
-	ShapeMgr()
-	{
-		
-	}
-
+	//================================================
+	// addShape
+	// Takes a position, shapeEnum, and color.
+	// Dynamically allocates the shape cooresponding
+	// to the data passed and pushes to the vector
+	//================================================
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
 		if (whichShape == CIRCLE)
@@ -34,12 +35,19 @@ public:
 			shapes.push_back(square);
 		}
 	}
-
+	//================================================
+	// listShapes
+	// func to return the vector
+	//================================================
 	const vector<DrawingShape*>& listShapes()
 	{
 		return shapes;
 	}
-
+	//================================================
+	// readData
+	// For reading data from file.  Reads in all of
+	// the shapeMgr data from the file.
+	//================================================
 	void readData(fstream& file)
 	{
 		drawingData temp;
@@ -48,7 +56,12 @@ public:
 			addShape(temp.pos, temp.shape, Color(temp.color));
 		}
 	}
-
+	//================================================
+	// writeData
+	// For writing data to the file.  Writes all of
+	// data concerning shapes on the canvas to the
+	// file.
+	//================================================
 	void writeData(fstream& file)
 	{
 		drawingData temp;

@@ -5,15 +5,18 @@ using namespace std;
 using namespace sf;
 #include "SettingsMgr.h"
 
-// finish this code; add functions, data as needed
-
 class SettingsUI
 {
 private:
-	SettingsMgr *settingsManager;
-	CircleShape redBtn, blueBtn, greenBtn, circleBtn;
-	RectangleShape squareBtn;
+	SettingsMgr *settingsManager;  //Creates a local version of settingsMgr to be used (primarily for draw func)
+	CircleShape redBtn, blueBtn, greenBtn, circleBtn; //Vars to represent the respectively named circular buttons
+	RectangleShape squareBtn;  //var to represent the square button for shape selection
 public:
+	//================================================
+	// SettingsUI
+	// Constructor for what the settings needs to have
+	// drawn (all buttons and text)
+	//================================================
 	SettingsUI(SettingsMgr *mgr)
 	{
 		settingsManager = mgr;
@@ -53,6 +56,11 @@ public:
 		squareBtn.setOutlineThickness(2);
 		squareBtn.setSize(Vector2f(40, 40));
 	}
+	//================================================
+	// handleMouseUp
+	// Func that, whenever the mouse is let up, will
+	// determine whether the mouse is on a button
+	//================================================
 	void handleMouseUp(Vector2f mouse)
 	{
 		if (redBtn.getGlobalBounds().contains(mouse))
@@ -80,7 +88,13 @@ public:
 			settingsManager->setCurShape(ShapeEnum::SQUARE);
 		}
 	}
-
+	//================================================
+	// Draw
+	// Sends data from private to be drawn onto canvas
+	// NOTE: I noticed that I am drawing the text
+	// every time and to further develop the efficiency
+	// that could be done in the constructor instead.
+	//================================================
 	void draw(RenderWindow& win)
 	{
 		// first have to load font
@@ -94,7 +108,6 @@ public:
 
 		Text selectedShape("Selected Shape", font, 25);
 		selectedShape.setPosition(30, 300);
-
 
 		//Red Button
 		if (settingsManager->getCurColor() == Color::Red)
@@ -147,7 +160,11 @@ public:
 		win.draw(circleBtn);
 		win.draw(squareBtn);
 	}
-
+	//================================================
+	// die
+	// func to "Die gracefully" and tell the user why
+	// Used when loading font.
+	//================================================
 	void die(string msg)
 	{
 		cout << msg << endl;

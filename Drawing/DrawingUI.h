@@ -5,20 +5,27 @@ using namespace std;
 using namespace sf;
 #include "ShapeMgr.h"
 
-// finish this code; add functions, data as needed
-
 class DrawingUI
 {
 private:
-	RectangleShape canvas;
+	RectangleShape canvas;  //A rect that will represent the canvas
 public:
+//================================================
+// Drawing UI
+// Constructor for drawing UI
+// Sets the canvas size and position
+//================================================
 	DrawingUI(Vector2f p)
 	{
 		canvas.setPosition(p);
 		canvas.setSize(Vector2f(500,500));
 		canvas.setFillColor(Color::White);
 	}
-
+//================================================
+// Draw
+// Sends data from the vector to be drawn onto
+// the canvas.
+//================================================
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
 		vector<DrawingShape*> list = mgr->listShapes();
@@ -29,10 +36,15 @@ public:
 		}
 	}
 	
+//================================================
+// isMouseInCanvas
+// Determines if the mouse is within the bounds
+// of the canvas and returns a bool.
+//================================================
 	bool isMouseInCanvas(Vector2f mouse)
 	{
 		bool result = false;
-		if (canvas.getGlobalBounds().contains(mouse) && canvas.getGlobalBounds().contains(Vector2f (mouse.x + 20,mouse.y+20)))
+		if (canvas.getGlobalBounds().contains(mouse) && canvas.getGlobalBounds().contains(Vector2f (mouse.x + 20,mouse.y + 20)))
 		{
 			result = true;
 		}
