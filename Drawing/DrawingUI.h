@@ -14,11 +14,8 @@ private:
 public:
 	DrawingUI(Vector2f p)
 	{
-		Vector2f canvasPos(250, 0);
-		canvas.setPosition(canvasPos);
-		canvas.setOutlineColor(Color::Black);
-		canvas.setOutlineThickness(3);
-		canvas.setSize(Vector2f(600,600));
+		canvas.setPosition(p);
+		canvas.setSize(Vector2f(500,500));
 		canvas.setFillColor(Color::White);
 	}
 
@@ -35,7 +32,7 @@ public:
 	bool isMouseInCanvas(Vector2f mouse)
 	{
 		bool result = false;
-		if (canvas.getGlobalBounds().contains(mouse))
+		if (canvas.getGlobalBounds().contains(mouse) && canvas.getGlobalBounds().contains(Vector2f (mouse.x + 20,mouse.y+20)))
 		{
 			result = true;
 		}

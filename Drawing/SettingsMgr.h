@@ -43,4 +43,19 @@ public:
 	{
 		currentShape = input;
 	}
+
+	void readData(fstream& file)
+	{
+		int temp;
+		file.read(reinterpret_cast<char*>(&temp), sizeof(temp));
+		file.read(reinterpret_cast<char*>(&currentShape), sizeof(currentShape));
+		currentColor = Color(temp);
+	}
+
+	void writeData(fstream& file)
+	{
+		int temp = currentColor.toInteger();
+		file.write(reinterpret_cast<char*>(&temp), sizeof(temp));
+		file.write(reinterpret_cast<char*>(&currentShape), sizeof(currentShape));
+	}
 };
